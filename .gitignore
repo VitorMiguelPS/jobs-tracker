@@ -1,0 +1,15 @@
+node_modules
+
+# Environment variables
+.env
+.env.local
+
+# Next.js
+.next/
+
+# Prisma - banco de dados local (não subir dados pessoais)
+*.db
+*.db-journal
+
+# Cliente Prisma gerado (regenerado via `npx prisma generate`)
+/src/generated/prisma

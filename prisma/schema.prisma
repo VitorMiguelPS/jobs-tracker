@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model JobApplication {
+  id        String       @id @default(cuid())
+  company   String
+  position  String
+  location  String?
+  url       String?
+  salary    String?
+  modality  String?
+  status    String
+  notes     String?
+  tags      String       @default("[]")
+  appliedAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  stages    StageEntry[]
+}
+
+model StageEntry {
+  id     String         @id @default(cuid())
+  status String
+  date   DateTime       @default(now())
+  notes  String?
+  jobId  String
+  job    JobApplication @relation(fields: [jobId], references: [id], onDelete: Cascade)
+}
