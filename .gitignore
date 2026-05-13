@@ -13,3 +13,6 @@ node_modules
 
 # Cliente Prisma gerado (regenerado via `npx prisma generate`)
 /src/generated/prisma
+
+# Claude Code
+.claude/

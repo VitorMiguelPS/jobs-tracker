@@ -76,6 +76,10 @@ export default function EditarVagaPage() {
     e.preventDefault();
     if (!job) return;
     setSaving(true);
+    const pending = tagInput.trim();
+    const finalTags = pending && !form.tags.includes(pending)
+      ? [...form.tags, pending]
+      : form.tags;
     await updateJob(job.id, {
       company: form.company.trim(),
       position: form.position.trim(),
@@ -85,7 +89,7 @@ export default function EditarVagaPage() {
       modality: form.modality || undefined,
       status: form.status,
       notes: form.notes.trim() || undefined,
-      tags: form.tags,
+      tags: finalTags,
     });
     router.push(`/vagas/${job.id}`);
   }

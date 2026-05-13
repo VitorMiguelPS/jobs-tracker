@@ -30,7 +30,7 @@ const STATUS_GROUPS: { label: string; statuses: JobStatus[]; color: string }[] =
   },
   {
     label: "Encerradas",
-    statuses: ["aceito", "rejeitado", "desistencia"],
+    statuses: ["aceito", "rejeitado", "desistencia", "cancelado"],
     color: "text-gray-500",
   },
 ];

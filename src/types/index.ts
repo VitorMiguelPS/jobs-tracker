@@ -7,7 +7,8 @@ export type JobStatus =
   | "proposta"
   | "aceito"
   | "rejeitado"
-  | "desistencia";
+  | "desistencia"
+  | "cancelado";
 
 export interface StageEntry {
   id: string;
@@ -100,6 +101,13 @@ export const STATUS_CONFIG: Record<
     border: "border-gray-200",
     order: 9,
   },
+  cancelado: {
+    label: "Cancelado",
+    color: "text-rose-700",
+    bg: "bg-rose-50",
+    border: "border-rose-200",
+    order: 10,
+  },
 };
 
 export const PIPELINE_STATUSES: JobStatus[] = [
@@ -112,4 +120,4 @@ export const PIPELINE_STATUSES: JobStatus[] = [
   "aceito",
 ];
 
-export const TERMINAL_STATUSES: JobStatus[] = ["aceito", "rejeitado", "desistencia"];
+export const TERMINAL_STATUSES: JobStatus[] = ["aceito", "rejeitado", "desistencia", "cancelado"];

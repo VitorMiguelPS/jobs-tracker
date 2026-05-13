@@ -67,6 +67,10 @@ export default function NovaVagaPage() {
       return;
     }
     setSaving(true);
+    const pending = tagInput.trim();
+    const finalTags = pending && !form.tags.includes(pending)
+      ? [...form.tags, pending]
+      : form.tags;
     const job = await createJob({
       company: form.company.trim(),
       position: form.position.trim(),
@@ -76,7 +80,7 @@ export default function NovaVagaPage() {
       modality: form.modality || undefined,
       status: form.status,
       notes: form.notes.trim() || undefined,
-      tags: form.tags,
+      tags: finalTags,
     });
     router.push(`/vagas/${job.id}`);
   }

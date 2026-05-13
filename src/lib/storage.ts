@@ -59,7 +59,7 @@ export async function deleteJob(id: string): Promise<void> {
 export function getStats(jobs: JobApplication[]) {
   const total = jobs.length;
   const active = jobs.filter(
-    (j) => !["aceito", "rejeitado", "desistencia"].includes(j.status)
+    (j) => !["aceito", "rejeitado", "desistencia", "cancelado"].includes(j.status)
   ).length;
   const aceito = jobs.filter((j) => j.status === "aceito").length;
   const rejeitado = jobs.filter((j) => j.status === "rejeitado").length;
