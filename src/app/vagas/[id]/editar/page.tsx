@@ -102,28 +102,30 @@ export default function EditarVagaPage() {
     );
   }
 
+  const inputBase = "w-full border rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent border-gray-200 dark:border-slate-600";
+
   return (
     <div className="max-w-2xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <Link
           href={`/vagas/${job.id}`}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-500"
+          className="p-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors text-gray-500 dark:text-slate-400"
         >
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Editar candidatura</h1>
-          <p className="text-gray-500 text-sm">{job.position} — {job.company}</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-100">Editar candidatura</h1>
+          <p className="text-gray-500 dark:text-slate-400 text-sm">{job.position} — {job.company}</p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-5">
-          <h2 className="font-semibold text-gray-800">Informações da vaga</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-slate-700 space-y-5 transition-colors">
+          <h2 className="font-semibold text-gray-800 dark:text-slate-200">Informações da vaga</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">
+              <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">
                 Empresa <span className="text-red-400">*</span>
               </label>
               <input
@@ -131,12 +133,12 @@ export default function EditarVagaPage() {
                 value={form.company}
                 onChange={(e) => set("company", e.target.value)}
                 required
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+                className={inputBase}
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">
+              <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">
                 Cargo <span className="text-red-400">*</span>
               </label>
               <input
@@ -144,26 +146,26 @@ export default function EditarVagaPage() {
                 value={form.position}
                 onChange={(e) => set("position", e.target.value)}
                 required
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+                className={inputBase}
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">Localização</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">Localização</label>
               <input
                 type="text"
                 value={form.location}
                 onChange={(e) => set("location", e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+                className={inputBase}
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">Modalidade</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">Modalidade</label>
               <select
                 value={form.modality}
                 onChange={(e) => set("modality", e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent bg-white"
+                className={inputBase}
               >
                 <option value="">Não informado</option>
                 <option value="presencial">Presencial</option>
@@ -173,21 +175,21 @@ export default function EditarVagaPage() {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">Faixa salarial</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">Faixa salarial</label>
               <input
                 type="text"
                 value={form.salary}
                 onChange={(e) => set("salary", e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+                className={inputBase}
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">Etapa atual</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">Etapa atual</label>
               <select
                 value={form.status}
                 onChange={(e) => set("status", e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent bg-white"
+                className={inputBase}
               >
                 {STATUS_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -199,32 +201,32 @@ export default function EditarVagaPage() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-700 block mb-1.5">Link da vaga</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">Link da vaga</label>
             <input
               type="url"
               value={form.url}
               onChange={(e) => set("url", e.target.value)}
               placeholder="https://..."
-              className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+              className={inputBase}
             />
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-5">
-          <h2 className="font-semibold text-gray-800">Detalhes adicionais</h2>
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-slate-700 space-y-5 transition-colors">
+          <h2 className="font-semibold text-gray-800 dark:text-slate-200">Detalhes adicionais</h2>
 
           <div>
-            <label className="text-sm font-medium text-gray-700 block mb-1.5">Observações</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">Observações</label>
             <textarea
               value={form.notes}
               onChange={(e) => set("notes", e.target.value)}
               rows={4}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent resize-none"
+              className={`${inputBase} resize-none`}
             />
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-700 block mb-1.5">Tags</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-slate-300 block mb-1.5">Tags</label>
             <div className="flex gap-2 mb-2">
               <input
                 type="text"
@@ -232,14 +234,14 @@ export default function EditarVagaPage() {
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
                 placeholder="Ex: React, Remoto, Startup..."
-                className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+                className={`${inputBase} flex-1`}
               />
               <button
                 type="button"
                 onClick={addTag}
-                className="p-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors"
+                className="p-2.5 bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 rounded-xl transition-colors"
               >
-                <Plus className="w-4 h-4 text-gray-600" />
+                <Plus className="w-4 h-4 text-gray-600 dark:text-slate-400" />
               </button>
             </div>
             {form.tags.length > 0 && (
@@ -247,10 +249,10 @@ export default function EditarVagaPage() {
                 {form.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="flex items-center gap-1.5 px-3 py-1 bg-indigo-50 text-indigo-700 border border-indigo-200 rounded-full text-sm"
+                    className="flex items-center gap-1.5 px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700 rounded-full text-sm"
                   >
                     {tag}
-                    <button type="button" onClick={() => removeTag(tag)} className="hover:text-indigo-900">
+                    <button type="button" onClick={() => removeTag(tag)} className="hover:text-indigo-900 dark:hover:text-indigo-100">
                       <X className="w-3.5 h-3.5" />
                     </button>
                   </span>
@@ -263,7 +265,7 @@ export default function EditarVagaPage() {
         <div className="flex gap-3">
           <Link
             href={`/vagas/${job.id}`}
-            className="flex-1 text-center px-4 py-3 border border-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-colors"
+            className="flex-1 text-center px-4 py-3 border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 rounded-xl font-medium hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
           >
             Cancelar
           </Link>

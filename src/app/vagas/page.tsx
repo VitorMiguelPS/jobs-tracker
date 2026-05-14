@@ -51,8 +51,8 @@ export default function VagasPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Minhas Vagas</h1>
-          <p className="text-gray-500 mt-1">{jobs.length} candidatura{jobs.length !== 1 ? "s" : ""} registrada{jobs.length !== 1 ? "s" : ""}</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-100">Minhas Vagas</h1>
+          <p className="text-gray-500 dark:text-slate-400 mt-1">{jobs.length} candidatura{jobs.length !== 1 ? "s" : ""} registrada{jobs.length !== 1 ? "s" : ""}</p>
         </div>
         <Link
           href="/vagas/nova"
@@ -65,18 +65,18 @@ export default function VagasPage() {
 
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-slate-500" />
           <input
             type="text"
             placeholder="Buscar por empresa, cargo, cidade..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-10 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+            className="w-full pl-10 pr-10 py-2.5 border border-gray-200 dark:border-slate-600 rounded-xl text-sm bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
           />
           {search && (
             <button
               onClick={() => setSearch("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-500 hover:text-gray-600 dark:hover:text-slate-300"
             >
               <X className="w-4 h-4" />
             </button>
@@ -92,12 +92,12 @@ export default function VagasPage() {
             className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
               activeFilter === idx
                 ? "bg-indigo-600 text-white shadow-sm"
-                : "bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+                : "bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-slate-600 hover:border-gray-300 dark:hover:border-slate-500 hover:bg-gray-50 dark:hover:bg-slate-700"
             }`}
           >
             {group.label}
             {group.statuses.length > 0 && (
-              <span className={`ml-1.5 text-xs ${activeFilter === idx ? "text-indigo-200" : "text-gray-400"}`}>
+              <span className={`ml-1.5 text-xs ${activeFilter === idx ? "text-indigo-200" : "text-gray-400 dark:text-slate-500"}`}>
                 ({jobs.filter((j) => group.statuses.includes(j.status)).length})
               </span>
             )}
@@ -109,11 +109,11 @@ export default function VagasPage() {
         <div className="text-center py-16">
           {jobs.length === 0 ? (
             <>
-              <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Plus className="w-8 h-8 text-gray-400" />
+              <div className="w-16 h-16 bg-gray-100 dark:bg-slate-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Plus className="w-8 h-8 text-gray-400 dark:text-slate-500" />
               </div>
-              <h3 className="font-semibold text-gray-700 mb-2">Nenhuma vaga ainda</h3>
-              <p className="text-gray-400 text-sm mb-4">Adicione sua primeira candidatura</p>
+              <h3 className="font-semibold text-gray-700 dark:text-slate-300 mb-2">Nenhuma vaga ainda</h3>
+              <p className="text-gray-400 dark:text-slate-500 text-sm mb-4">Adicione sua primeira candidatura</p>
               <Link
                 href="/vagas/nova"
                 className="inline-flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-indigo-700 transition-colors"
@@ -124,11 +124,11 @@ export default function VagasPage() {
             </>
           ) : (
             <>
-              <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Search className="w-8 h-8 text-gray-400" />
+              <div className="w-16 h-16 bg-gray-100 dark:bg-slate-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Search className="w-8 h-8 text-gray-400 dark:text-slate-500" />
               </div>
-              <h3 className="font-semibold text-gray-700 mb-1">Nenhum resultado</h3>
-              <p className="text-gray-400 text-sm">Tente buscar com outros termos ou filtros</p>
+              <h3 className="font-semibold text-gray-700 dark:text-slate-300 mb-1">Nenhum resultado</h3>
+              <p className="text-gray-400 dark:text-slate-500 text-sm">Tente buscar com outros termos ou filtros</p>
             </>
           )}
         </div>

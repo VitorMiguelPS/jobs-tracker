@@ -1,9 +1,18 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   body {
     background-color: #f8f9fb;
     color: #111827;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
+}
+
+/* Fora do @layer para ter prioridade sobre estilos layered */
+.dark body {
+  background-color: #1d212b;
+  color: #f1f5f9;
 }

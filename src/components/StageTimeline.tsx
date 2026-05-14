@@ -24,7 +24,7 @@ export function StageTimeline({ job }: StageTimelineProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-4">Pipeline de etapas</h3>
+        <h3 className="text-sm font-semibold text-gray-700 dark:text-slate-300 mb-4">Pipeline de etapas</h3>
         <div className="flex items-center gap-0">
           {PIPELINE_STATUSES.map((status, idx) => {
             const cfg = STATUS_CONFIG[status];
@@ -39,8 +39,8 @@ export function StageTimeline({ job }: StageTimelineProps) {
                       "w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2 transition-all",
                       reached
                         ? `${cfg.bg} ${cfg.border} ${cfg.color}`
-                        : "bg-gray-50 border-gray-200 text-gray-400",
-                      isCurrent && "ring-2 ring-offset-2 ring-indigo-400"
+                        : "bg-gray-50 dark:bg-slate-800 border-gray-200 dark:border-slate-600 text-gray-400 dark:text-slate-500",
+                      isCurrent && "ring-2 ring-offset-2 ring-indigo-400 dark:ring-offset-slate-900"
                     )}
                   >
                     {reached ? (
@@ -56,7 +56,7 @@ export function StageTimeline({ job }: StageTimelineProps) {
                   <span
                     className={cn(
                       "text-xs text-center w-16 leading-tight",
-                      reached ? "text-gray-700 font-medium" : "text-gray-400"
+                      reached ? "text-gray-700 dark:text-slate-300 font-medium" : "text-gray-400 dark:text-slate-500"
                     )}
                   >
                     {cfg.label.split(" ")[0]}
@@ -66,7 +66,7 @@ export function StageTimeline({ job }: StageTimelineProps) {
                   <div
                     className={cn(
                       "flex-1 h-0.5 mb-5",
-                      idx < currentPipelineIdx ? "bg-indigo-300" : "bg-gray-200"
+                      idx < currentPipelineIdx ? "bg-indigo-300 dark:bg-indigo-700" : "bg-gray-200 dark:bg-slate-600"
                     )}
                   />
                 )}
@@ -90,7 +90,7 @@ export function StageTimeline({ job }: StageTimelineProps) {
       </div>
 
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-3">Histórico de etapas</h3>
+        <h3 className="text-sm font-semibold text-gray-700 dark:text-slate-300 mb-3">Histórico de etapas</h3>
         <div className="space-y-3">
           {[...job.stages].reverse().map((stage, idx) => {
             const cfg = STATUS_CONFIG[stage.status];
@@ -100,13 +100,13 @@ export function StageTimeline({ job }: StageTimelineProps) {
                 key={stage.id}
                 className={cn(
                   "flex gap-3 p-3 rounded-xl border transition-all",
-                  isLatest ? `${cfg.bg} ${cfg.border}` : "bg-gray-50 border-gray-100"
+                  isLatest ? `${cfg.bg} ${cfg.border}` : "bg-gray-50 dark:bg-slate-800 border-gray-100 dark:border-slate-700"
                 )}
               >
                 <div
                   className={cn(
                     "w-2 h-2 rounded-full mt-1.5 flex-shrink-0",
-                    isLatest ? cfg.color.replace("text-", "bg-") : "bg-gray-300"
+                    isLatest ? cfg.color.replace("text-", "bg-") : "bg-gray-300 dark:bg-slate-500"
                   )}
                 />
                 <div className="flex-1 min-w-0">
@@ -114,17 +114,17 @@ export function StageTimeline({ job }: StageTimelineProps) {
                     <span
                       className={cn(
                         "text-sm font-medium",
-                        isLatest ? cfg.color : "text-gray-600"
+                        isLatest ? cfg.color : "text-gray-600 dark:text-slate-300"
                       )}
                     >
                       {cfg.label}
                     </span>
-                    <span className="text-xs text-gray-400 flex-shrink-0">
+                    <span className="text-xs text-gray-400 dark:text-slate-500 flex-shrink-0">
                       {formatDateTime(stage.date)}
                     </span>
                   </div>
                   {stage.notes && (
-                    <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+                    <p className="text-sm text-gray-500 dark:text-slate-400 mt-1 leading-relaxed">
                       {stage.notes}
                     </p>
                   )}

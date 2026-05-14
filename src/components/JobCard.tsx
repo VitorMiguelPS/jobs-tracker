@@ -20,36 +20,36 @@ const MODALITY_LABELS = {
 export function JobCard({ job }: JobCardProps) {
   return (
     <Link href={`/vagas/${job.id}`} className="block group">
-      <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:border-indigo-200 hover:shadow-md transition-all duration-200 group-hover:-translate-y-0.5">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-slate-700 hover:border-indigo-200 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 group-hover:-translate-y-0.5">
         <div className="flex items-start gap-4">
           <CompanyAvatar company={job.company} size="md" />
 
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0">
-                <h3 className="font-semibold text-gray-900 truncate group-hover:text-indigo-700 transition-colors">
+                <h3 className="font-semibold text-gray-900 dark:text-white truncate group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors">
                   {job.position}
                 </h3>
-                <p className="text-sm text-gray-500 font-medium">{job.company}</p>
+                <p className="text-sm text-gray-500 dark:text-white font-medium">{job.company}</p>
               </div>
               <StatusBadge status={job.status} size="sm" />
             </div>
 
             <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5">
               {job.location && (
-                <span className="flex items-center gap-1 text-xs text-gray-400">
+                <span className="flex items-center gap-1 text-xs text-gray-400 dark:text-white">
                   <MapPin className="w-3.5 h-3.5" />
                   {job.location}
                 </span>
               )}
               {job.modality && (
-                <span className="flex items-center gap-1 text-xs text-gray-400">
+                <span className="flex items-center gap-1 text-xs text-gray-400 dark:text-white">
                   <Briefcase className="w-3.5 h-3.5" />
                   {MODALITY_LABELS[job.modality]}
                 </span>
               )}
               {job.salary && (
-                <span className="flex items-center gap-1 text-xs text-gray-400">
+                <span className="flex items-center gap-1 text-xs text-gray-400 dark:text-white">
                   <DollarSign className="w-3.5 h-3.5" />
                   {job.salary}
                 </span>
@@ -57,7 +57,7 @@ export function JobCard({ job }: JobCardProps) {
             </div>
 
             <div className="mt-3 flex items-center justify-between">
-              <span className="flex items-center gap-1 text-xs text-gray-400">
+              <span className="flex items-center gap-1 text-xs text-gray-400 dark:text-white">
                 <Clock className="w-3.5 h-3.5" />
                 Candidatado em {formatDate(job.appliedAt)}
               </span>
@@ -67,7 +67,7 @@ export function JobCard({ job }: JobCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="flex items-center gap-1 text-xs text-indigo-500 hover:text-indigo-700 transition-colors"
+                  className="flex items-center gap-1 text-xs text-indigo-500 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   Ver vaga
@@ -80,7 +80,7 @@ export function JobCard({ job }: JobCardProps) {
                 {job.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 bg-gray-100 text-gray-500 rounded-full text-xs"
+                    className="px-2 py-0.5 bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-white rounded-full text-xs"
                   >
                     {tag}
                   </span>
@@ -90,11 +90,11 @@ export function JobCard({ job }: JobCardProps) {
           </div>
         </div>
 
-        <div className="mt-3 pt-3 border-t border-gray-50 flex items-center justify-between">
-          <span className="text-xs text-gray-400">
+        <div className="mt-3 pt-3 border-t border-gray-50 dark:border-slate-700 flex items-center justify-between">
+          <span className="text-xs text-gray-400 dark:text-white">
             Atualizado {formatRelative(job.updatedAt)}
           </span>
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-gray-400 dark:text-white">
             {job.stages.length} {job.stages.length === 1 ? "etapa" : "etapas"}
           </span>
         </div>

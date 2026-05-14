@@ -71,46 +71,46 @@ export default function JobDetailPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/vagas"
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-500"
+            className="p-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors text-gray-500 dark:text-slate-400"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
-          <span className="text-sm text-gray-400">Voltar para vagas</span>
+          <span className="text-sm text-gray-400 dark:text-slate-500">Voltar para vagas</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-slate-700 transition-colors">
           <div className="flex items-start gap-4">
             <CompanyAvatar company={job.company} size="lg" />
 
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">{job.position}</h1>
-                  <p className="text-gray-500 font-medium mt-0.5">{job.company}</p>
+                  <h1 className="text-xl font-bold text-gray-900 dark:text-slate-100">{job.position}</h1>
+                  <p className="text-gray-500 dark:text-slate-400 font-medium mt-0.5">{job.company}</p>
                 </div>
                 <StatusBadge status={job.status} />
               </div>
 
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
                 {job.location && (
-                  <span className="flex items-center gap-1.5 text-sm text-gray-500">
+                  <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400">
                     <MapPin className="w-4 h-4" />
                     {job.location}
                   </span>
                 )}
                 {job.modality && (
-                  <span className="flex items-center gap-1.5 text-sm text-gray-500">
+                  <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400">
                     <Briefcase className="w-4 h-4" />
                     {MODALITY_LABELS[job.modality]}
                   </span>
                 )}
                 {job.salary && (
-                  <span className="flex items-center gap-1.5 text-sm text-gray-500">
+                  <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400">
                     <DollarSign className="w-4 h-4" />
                     {job.salary}
                   </span>
                 )}
-                <span className="flex items-center gap-1.5 text-sm text-gray-500">
+                <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400">
                   <Calendar className="w-4 h-4" />
                   Candidatado em {formatDate(job.appliedAt)}
                 </span>
@@ -121,7 +121,7 @@ export default function JobDetailPage() {
                   href={job.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
                   Ver anúncio da vaga
@@ -133,7 +133,7 @@ export default function JobDetailPage() {
                   {job.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium"
+                      className="px-2.5 py-1 bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 rounded-full text-xs font-medium"
                     >
                       {tag}
                     </span>
@@ -144,15 +144,15 @@ export default function JobDetailPage() {
           </div>
 
           {job.notes && (
-            <div className="mt-5 pt-5 border-t border-gray-100">
-              <p className="text-sm font-medium text-gray-700 mb-1.5">Observações</p>
-              <p className="text-sm text-gray-500 leading-relaxed whitespace-pre-wrap">
+            <div className="mt-5 pt-5 border-t border-gray-100 dark:border-slate-700">
+              <p className="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5">Observações</p>
+              <p className="text-sm text-gray-500 dark:text-slate-400 leading-relaxed whitespace-pre-wrap">
                 {job.notes}
               </p>
             </div>
           )}
 
-          <div className="mt-5 pt-5 border-t border-gray-100 flex gap-3">
+          <div className="mt-5 pt-5 border-t border-gray-100 dark:border-slate-700 flex gap-3">
             {!isFinished && (
               <button
                 onClick={() => setShowUpdateModal(true)}
@@ -164,21 +164,21 @@ export default function JobDetailPage() {
             )}
             <Link
               href={`/vagas/${job.id}/editar`}
-              className="flex items-center gap-2 border border-gray-200 text-gray-700 hover:bg-gray-50 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors justify-center"
+              className="flex items-center gap-2 border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-700 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors justify-center"
             >
               <Pencil className="w-4 h-4" />
               Editar
             </Link>
             <button
               onClick={() => setShowDeleteConfirm(true)}
-              className="flex items-center gap-2 border border-red-200 text-red-600 hover:bg-red-50 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors justify-center"
+              className="flex items-center gap-2 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors justify-center"
             >
               <Trash2 className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-slate-700 transition-colors">
           <StageTimeline job={job} />
         </div>
       </div>
@@ -197,16 +197,16 @@ export default function JobDetailPage() {
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setShowDeleteConfirm(false)}
           />
-          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 z-10">
-            <h2 className="text-lg font-bold text-gray-900 mb-2">Excluir candidatura</h2>
-            <p className="text-sm text-gray-500 mb-6">
+          <div className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-sm p-6 z-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2">Excluir candidatura</h2>
+            <p className="text-sm text-gray-500 dark:text-slate-400 mb-6">
               Tem certeza? Isso removerá <strong>{job.position}</strong> em{" "}
               <strong>{job.company}</strong> e todo o histórico de etapas.
             </p>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowDeleteConfirm(false)}
-                className="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors"
+                className="flex-1 px-4 py-2.5 border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 rounded-xl text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
               >
                 Cancelar
               </button>
