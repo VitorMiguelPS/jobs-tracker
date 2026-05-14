@@ -19,8 +19,13 @@ import { JobCard } from "@/components/JobCard";
 
 const STATUS_GROUPS: { label: string; statuses: JobStatus[]; color: string }[] = [
   {
+    label: "Não iniciado",
+    statuses: ["candidatado"],
+    color: "text-slate-500 dark:text-white",
+  },
+  {
     label: "Em andamento",
-    statuses: ["candidatado", "triagem", "entrevista_rh", "entrevista_tecnica", "teste"],
+    statuses: ["triagem", "entrevista_rh", "entrevista_tecnica", "teste"],
     color: "text-blue-600",
   },
   {
@@ -31,7 +36,7 @@ const STATUS_GROUPS: { label: string; statuses: JobStatus[]; color: string }[] =
   {
     label: "Encerradas",
     statuses: ["aceito", "rejeitado", "desistencia", "cancelado"],
-    color: "text-gray-500",
+    color: "text-gray-500 dark:text-white",
   },
 ];
 
@@ -109,7 +114,7 @@ export default function DashboardPage() {
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {byStatus.map((group) => (
           <div key={group.label} className="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-slate-700 transition-colors">
             <div className="flex items-center justify-between mb-3">
